@@ -17,7 +17,14 @@ public class SistemaPrincipal {
             System.out.println("Digite o autor do livro: ");
             livro.setAutor(scan.nextLine());
             System.out.println("Digite o ano de publicação do livro: ");
-            livro.setAnoPublicacao(scan.nextInt());
+            String ano = scan.nextLine();
+            if (ano.chars().allMatch(Character::isDigit)) {
+                livro.setAnoPublicacao(Integer.valueOf(ano));
+            } else {
+                System.out.println("----------------------");
+                System.out.println("O ano de publicação deve ser um número inteiro.");
+                return true;
+            }
             scan.nextLine();
             System.out.println("Digite o gênero do livro: ");
             livro.setGenero(scan.nextLine());
